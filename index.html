@@ -57,7 +57,7 @@
       font-size: 1rem;
       color: #ccc;
     }
-    .btn, .audio-btn {
+    .btn {
       background: gold;
       color: #222;
       border: none;
@@ -72,7 +72,7 @@
       margin-right: 10px;
       margin-top: 10px;
     }
-    .btn:hover, .audio-btn:hover {
+    .btn:hover {
       background: #ffca00cc;
     }
     .image-wrapper {
@@ -154,20 +154,6 @@
       </div>
     </section>
 
-    <section>
-      <h2>🎧 تشغيل الصوت التلقائي</h2>
-      <button class="audio-btn" onclick="toggleAudio()" id="audioBtn">🔊 إيقاف الصوت</button>
-    </section>
-
-    <!-- خدعة iframe بصوت صامت لتفعيل autoplay -->
-    <iframe src="https://cdn.jsdelivr.net/gh/napthedev/silence@main/silence.mp3" allow="autoplay" style="display:none;"></iframe>
-
-    <!-- الصوت الأساسي -->
-    <audio id="bgAudio" preload="auto" autoplay loop>
-      <source src="https://github.com/tptub/fille_min/raw/refs/heads/main/MARWAN-PABLO-EL-HALAL-_-مروان-بابلو-الحلال.mp3" type="audio/mpeg">
-      المتصفح لا يدعم تشغيل الصوت.
-    </audio>
-
     <section id="download">
       <h2>تحميل الأداة</h2>
       <p>يمكنك تحميل آخر نسخة من الأداة عبر الرابط التالي:</p>
@@ -200,23 +186,12 @@
     &copy; 2025 Ａ Ｌ Ｐ Ｈ Ａ Executor | By g.Olm &amp; darsh By-turboxx0
   </footer>
 
-  <script>
-    const audio = document.getElementById("bgAudio");
-    const btn = document.getElementById("audioBtn");
+  <!-- Audio autoplay workaround -->
+  <iframe src="assets/music/silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
 
-    window.addEventListener("load", () => {
-      audio.play().catch(() => {});
-    });
+  <audio id="player" preload="auto" autoplay loop>
+    <source src="assets/music/loop.mp3" type="audio/mp3">
+  </audio>
 
-    function toggleAudio() {
-      if (audio.paused) {
-        audio.play();
-        btn.textContent = "🔊 إيقاف الصوت";
-      } else {
-        audio.pause();
-        btn.textContent = "🎵 تشغيل الصوت";
-      }
-    }
-  </script>
 </body>
 </html>
