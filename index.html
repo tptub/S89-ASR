@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ａ Ｌ Ｐ Ｈ Ａ Executor - WeAreDevs</title>
+  <title>Ａ Ｌ Ｐ Ｈ Ａ Executor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Cairo', sans-serif;
     }
     body {
-      background-color: #222;
-      color: #ddd;
-      line-height: 1.6;
+      background: linear-gradient(to bottom, #111, #1a1a1a);
+      color: #f0f0f0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -23,173 +23,166 @@
     }
     header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
     header h1 {
-      font-size: 2.8rem;
-      color: gold;
-      margin-bottom: 10px;
-      text-shadow: 0 0 8px #ffb700;
+      font-size: 3rem;
+      color: #ffd700;
+      text-shadow: 0 0 12px #ffaa00;
     }
     header p {
       font-size: 1.2rem;
       color: #ccc;
+      margin-top: 10px;
     }
     .container {
-      max-width: 900px;
       width: 100%;
-      background: #2b2b2b;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #ffb700aa;
+      max-width: 950px;
+      background: #222;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
       margin-bottom: 40px;
     }
-    section {
-      margin-bottom: 30px;
-    }
     h2 {
-      color: gold;
+      color: #ffd700;
       margin-bottom: 15px;
-      border-bottom: 2px solid gold;
+      border-bottom: 2px solid #ffd700;
       padding-bottom: 5px;
     }
     p {
-      font-size: 1rem;
-      color: #ccc;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #ddd;
     }
     .btn {
-      background: gold;
-      color: #222;
+      background: #ffd700;
+      color: #111;
       border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
+      padding: 14px 28px;
+      border-radius: 10px;
       font-weight: bold;
       font-size: 1.1rem;
       cursor: pointer;
-      transition: background 0.3s ease;
       text-decoration: none;
       display: inline-block;
-      margin-right: 10px;
-      margin-top: 10px;
+      margin: 20px 0;
+      transition: background 0.3s ease;
     }
     .btn:hover {
-      background: #ffca00cc;
+      background: #ffbf00;
     }
     .image-wrapper {
       text-align: center;
-      margin: 20px 0;
+      margin-top: 20px;
     }
-    img {
+    .image-wrapper img {
       max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ffb700aa;
+      border-radius: 12px;
+      box-shadow: 0 0 18px #ffaa00aa;
     }
     .discord-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1.1rem;
-      color: #7289da;
-      text-decoration: none;
-      border: 2px solid #7289da;
-      padding: 8px 15px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
+      display: inline-block;
       margin-top: 10px;
+      background: #5865F2;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
     }
     .discord-link:hover {
-      background: #7289da;
-      color: white;
+      background: #4752c4;
     }
     footer {
       margin-top: auto;
-      padding: 15px 10px;
+      padding: 20px;
       font-size: 0.9rem;
-      color: #999;
+      color: #aaa;
       text-align: center;
-      border-top: 1px solid #444;
-      width: 100%;
-      max-width: 900px;
     }
     details {
       background: #333;
       border-radius: 8px;
-      padding: 12px 15px;
-      margin-bottom: 10px;
-      cursor: pointer;
+      padding: 15px 20px;
+      margin-top: 15px;
     }
     summary {
-      font-weight: bold;
-      color: gold;
+      cursor: pointer;
       font-size: 1.1rem;
-      outline: none;
+      color: gold;
+      font-weight: bold;
     }
-    details[open] summary {
-      color: #fff;
+    summary:hover {
+      color: white;
     }
-    details p {
-      margin-top: 8px;
-      color: #ddd;
-      font-size: 1rem;
-      line-height: 1.4;
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Ａ Ｌ Ｐ Ｈ Ａ Executor</h1>
-    <p>أداة WeAreDevs API القوية لتنفيذ سكربتات Roblox بسهولة وأمان</p>
+    <p>أفضل أداة لتنفيذ سكربتات Roblox بسهولة وقوة 🔥</p>
   </header>
 
   <div class="container">
-    <section id="about">
-      <h2>عن الأداة</h2>
+    <section>
+      <h2>معلومات عن الأداة</h2>
       <p>
-        Ａ Ｌ Ｐ Ｈ Ａ Executor هي أداة متقدمة مبنية باستخدام <strong>WeAreDevs API</strong>
-        تسمح لك بتنفيذ سكربتات Lua داخل ألعاب Roblox. تتميز الأداة بدعم كامل للغة العربية،
-        واجهة مستخدم سهلة، وأداء سريع مع خيارات اتصال متعددة.
+        Ａ Ｌ Ｐ Ｈ Ａ Executor تعتمد على WeAreDevs API لتوفر لك إمكانيات تنفيذ السكربتات بلغة Lua داخل Roblox.
+        تصميم جذاب، دعم للغة العربية، وأداء لا مثيل له.
       </p>
       <div class="image-wrapper">
-        <img src="https://github.com/tptub/fille_min/blob/main/3123.png?raw=true" alt="لقطة شاشة لأداة Ａ Ｌ Ｐ Ｈ Ａ Executor" />
+        <img src="https://github.com/tptub/fille_min/blob/main/3123.png?raw=true" alt="واجهة البرنامج" />
       </div>
     </section>
 
-    <section id="download">
+    <section>
       <h2>تحميل الأداة</h2>
-      <p>يمكنك تحميل آخر نسخة من الأداة عبر الرابط التالي:</p>
-      <a href="https://github.com/tptub/fille_min/raw/refs/heads/main/ALPHA%20Executor.zip" class="btn" target="_blank" rel="noopener noreferrer" download>
+      <p>اضغط الزر لتحميل آخر إصدار من الأداة مباشرة:</p>
+      <a href="https://github.com/tptub/fille_min/raw/refs/heads/main/ALPHA%20Executor.zip" class="btn" download>
         ⬇️ تحميل Ａ Ｌ Ｐ Ｈ Ａ Executor
       </a>
-      <a href="https://discord.com/invite/aswvUDXcp9" target="_blank" class="discord-link" rel="noopener noreferrer">
-        🟦 انضم إلى ديسكورد الدعم الفني
-      </a>
+      <br />
+      <a href="https://discord.com/invite/aswvUDXcp9" class="discord-link" target="_blank">🟦 انضم إلى الدعم الفني</a>
     </section>
 
-    <section id="faq">
+    <section>
       <h2>الأسئلة الشائعة</h2>
       <details>
-        <summary>كيف يمكنني استخدام الأداة؟</summary>
-        <p>بعد تحميل الأداة وتشغيلها، يمكنك إدخال السكربت في مربع النص والضغط على "تنفيذ السكربت".</p>
+        <summary>هل الأداة مجانية بالكامل؟</summary>
+        <p>نعم، يمكنك تحميلها واستخدامها دون أي رسوم.</p>
       </details>
       <details>
-        <summary>هل الأداة تدعم اللغة العربية؟</summary>
-        <p>نعم، الأداة تدعم العربية بالكامل مع تحويل النصوص ليونيكود.</p>
+        <summary>هل تدعم اللغة العربية؟</summary>
+        <p>تدعم بشكل كامل، وتشمل الواجهة والمخرجات.</p>
       </details>
       <details>
-        <summary>هل يمكنني الحصول على دعم؟</summary>
-        <p>انضم إلى سيرفر الديسكورد الخاص بنا للحصول على الدعم والمساعدة.</p>
+        <summary>كيف أحصل على المساعدة؟</summary>
+        <p>عبر ديسكورد الرسمي المذكور بالأعلى.</p>
       </details>
     </section>
   </div>
 
   <footer>
-    &copy; 2025 Ａ Ｌ Ｐ Ｈ Ａ Executor | By g.Olm &amp; darsh By-turboxx0
+    &copy; 2025 Ａ Ｌ Ｐ Ｈ Ａ Executor | تصميم: g.Olm و darsh By-turboxx0
   </footer>
 
-  <!-- صوت يعمل تلقائيًا -->
-  <audio id="player" autoplay loop>
+  <!-- صوت تلقائي -->
+  <audio autoplay loop id="player">
     <source src="assets/music/loop.mp3" type="audio/mp3" />
   </audio>
 
+  <script>
+    // لإجبار التشغيل التلقائي إذا تم كتم الصوت تلقائياً
+    window.addEventListener('load', () => {
+      const player = document.getElementById('player');
+      player.muted = false;
+      player.play().catch(e => console.log("Autoplay blocked:", e));
+    });
+  </script>
 </body>
 </html>
