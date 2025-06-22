@@ -80,6 +80,17 @@
       color: #ffcc00;
     }
     footer { margin-top: auto; padding: 20px; font-size: 0.9rem; color: #aaa; text-align: center; }
+    .image-wrapper {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .image-wrapper img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 18px #ffaa00aa;
+      cursor: pointer;
+      transition: 0.5s ease;
+    }
   </style>
 </head>
 <body>
@@ -94,15 +105,9 @@
         Ａ Ｌ Ｐ Ｈ Ａ Executor تعتمد على WeAreDevs API لتوفر لك إمكانيات تنفيذ السكربتات بلغة Lua داخل Roblox.
         تصميم جذاب، دعم للغة العربية، وأداء لا مثيل له.
       </p>
-    </section>
-    <section>
-      <h2>تحميل الأداة</h2>
-      <p>اضغط الزر لتحميل آخر إصدار من الأداة مباشرة:</p>
-      <a href="https://github.com/tptub/-Executor-wep/raw/main/ALPHA%20Executor.zip" class="btn" download>
-        ⬇️ تحميل Ａ Ｌ Ｐ Ｈ Ａ Executor
-      </a>
-      <br />
-      <a href="https://discord.com/invite/XXXXXXX" class="discord-link" target="_blank">🟦 انضم إلى الدعم الفني</a>
+      <div class="image-wrapper">
+        <img id="alpha-image" src="https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png" onclick="nextImage()" />
+      </div>
     </section>
     <section>
       <h2>الحصول على مفتاح التفعيل</h2>
@@ -118,8 +123,15 @@
     &copy; 2025 Ａ Ｌ Ｐ Ｈ Ａ Executor | جميع الحقوق محفوظة.
   </footer>
   <script>
+    const images = ['https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png', 'https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/2.png'];
+    let currentImage = 0;
+    function nextImage() {
+      currentImage = (currentImage + 1) % images.length;
+      document.getElementById("alpha-image").src = images[currentImage];
+    }
+
     function getKey() {
-      fetch("https://your-replit-name.repl.co/getkey")
+      fetch("https://specificdescriptivebacktick-1.beloralcgo.repl.co/getkey")
         .then(res => res.json())
         .then(data => {
           const key = data.key;
