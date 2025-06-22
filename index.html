@@ -158,12 +158,6 @@
     </section>
 
     <section>
-      <h2>الحصول على كود مجاني</h2>
-      <button class="btn" onclick="getFreeKey()">🔑 احصل على كود مجاني لمدة ساعة</button>
-      <p id="key-result" style="margin-top:10px; font-weight:bold;"></p>
-    </section>
-
-    <section>
       <h2>الأسئلة الشائعة</h2>
       <details>
         <summary>هل الأداة مجانية بالكامل؟</summary>
@@ -184,7 +178,6 @@
     &copy; 2025 Ａ Ｌ Ｐ Ｈ Ａ Executor | تصميم: g.Olm و darsh By-turboxx0
   </footer>
 
-  <!-- صوت تلقائي -->
   <audio autoplay loop id="player">
     <source src="assets/music/loop.mp3" type="audio/mp3" />
   </audio>
@@ -219,25 +212,6 @@
     }
 
     window.addEventListener("load", resetTimer);
-
-    // API كود مجاني من
-    async function getFreeKey() {
-      const result = document.getElementById("key-result");
-      result.textContent = "⏳ جاري توليد الكود...";
-      try {
-        const res = await fetch("https://alpha-api-295h.onrender.com/generate-key", {
-          method: "POST"
-        });
-        const data = await res.json();
-        if (data.success) {
-          result.textContent = "✅ كودك: " + data.key;
-        } else {
-          result.textContent = "❌ فشل في توليد الكود.";
-        }
-      } catch (e) {
-        result.textContent = "❌ حدث خطأ في الاتصال.";
-      }
-    }
   </script>
 </body>
 </html>
