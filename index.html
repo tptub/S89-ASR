@@ -6,12 +6,7 @@
   <title>Ａ Ｌ Ｐ Ｈ Ａ Executor</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Cairo', sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
     body {
       background: linear-gradient(to bottom, #111, #1a1a1a);
       color: #f0f0f0;
@@ -21,20 +16,13 @@
       align-items: center;
       padding: 20px;
     }
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+    header { text-align: center; margin-bottom: 40px; }
     header h1 {
       font-size: 3rem;
       color: #ffd700;
       text-shadow: 0 0 12px #ffaa00;
     }
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-top: 10px;
-    }
+    header p { font-size: 1.2rem; color: #ccc; margin-top: 10px; }
     .container {
       width: 100%;
       max-width: 950px;
@@ -44,17 +32,8 @@
       box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
       margin-bottom: 40px;
     }
-    h2 {
-      color: #ffd700;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #ffd700;
-      padding-bottom: 5px;
-    }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #ddd;
-    }
+    h2 { color: #ffd700; margin-bottom: 15px; border-bottom: 2px solid #ffd700; padding-bottom: 5px; }
+    p { font-size: 1.1rem; line-height: 1.7; color: #ddd; }
     .btn {
       background: #ffd700;
       color: #111;
@@ -69,23 +48,8 @@
       margin: 10px 5px;
       transition: background 0.3s ease;
     }
-    .btn:hover {
-      background: #ffbf00;
-    }
-    .image-wrapper {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .image-wrapper img {
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 0 18px #ffaa00aa;
-      cursor: pointer;
-      transition: 0.5s ease;
-    }
+    .btn:hover { background: #ffbf00; }
     .discord-link {
-      display: inline-block;
-      margin-top: 10px;
       background: #5865F2;
       color: white;
       padding: 10px 20px;
@@ -93,163 +57,71 @@
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
+      display: inline-block;
+      margin: 10px 0;
     }
-    .discord-link:hover {
-      background: #4752c4;
-    }
-    footer {
-      margin-top: auto;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #aaa;
-      text-align: center;
-    }
-    details {
-      background: #333;
-      border-radius: 8px;
-      padding: 15px 20px;
-      margin-top: 15px;
-    }
-    summary {
-      cursor: pointer;
-      font-size: 1.1rem;
-      color: gold;
-      font-weight: bold;
-    }
-    summary:hover {
-      color: white;
-    }
-    audio {
+    .discord-link:hover { background: #4752c4; }
+    #key-box, #steps, #get-key-box {
+      margin-top: 20px;
       display: none;
     }
     #key-box {
-      display: none;
       background: #111;
-      padding: 20px;
-      margin-top: 20px;
       border: 2px dashed #ffd700;
       border-radius: 10px;
+      padding: 20px;
       text-align: center;
     }
     #the-key {
       font-size: 1.4rem;
       color: #ffd700;
       margin: 10px 0;
-      display: block;
     }
     #timer {
       font-size: 1.2rem;
       color: #ffcc00;
     }
+    footer { margin-top: auto; padding: 20px; font-size: 0.9rem; color: #aaa; text-align: center; }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Ａ Ｌ Ｐ Ｈ Ａ Executor</h1>
     <p>أفضل أداة لتنفيذ سكربتات Roblox بسهولة وقوة 🔥</p>
   </header>
-
   <div class="container">
-
-    <section>
-      <h2>معلومات عن الأداة</h2>
-      <p>
-        Ａ Ｌ Ｐ Ｈ Ａ Executor تعتمد على WeAreDevs API لتوفر لك إمكانيات تنفيذ السكربتات بلغة Lua داخل Roblox.
-        تصميم جذاب، دعم للغة العربية، وأداء لا مثيل له.
-      </p>
-      <div class="image-wrapper">
-        <img id="alpha-image" src="https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png" alt="واجهة البرنامج" onclick="nextImage()" />
-      </div>
-    </section>
-
-    <section>
-      <h2>تحميل الأداة</h2>
-      <p>اضغط الزر لتحميل آخر إصدار من الأداة مباشرة:</p>
-      <a href="https://github.com/tptub/fille_min/raw/refs/heads/main/ALPHA%20Executor.zip" class="btn" download>
-        ⬇️ تحميل Ａ Ｌ Ｐ Ｈ Ａ Executor
-      </a>
-      <br />
-      <a href="https://discord.com/invite/aswvUDXcp9" class="discord-link" target="_blank">🟦 انضم إلى الدعم الفني</a>
-    </section>
-
     <section>
       <h2>الحصول على الكود 🔑</h2>
-      <p>يجب مشاهدة الفيديو والدخول إلى الديسكورد لتفعيل الكود لمدة ساعة واحدة.</p>
-      <a href="https://www.youtube.com/watch?v=XXXXXXX" class="btn" target="_blank">📺 شاهد الفيديو</a>
-      <a href="https://discord.gg/XXXXXXX" class="discord-link" target="_blank">🟦 انضم للديسكورد</a>
-      <br><br>
-      <button class="btn" onclick="getKey()">🎟️ احصل على الكود</button>
-
+      <button class="btn" onclick="showSteps()">🎟️ احصل على كود مجاني</button>
+      <div id="steps">
+        <p>1️⃣ شاهد هذا الفيديو:</p>
+        <a href="https://www.youtube.com/watch?v=XXXXXXX" class="btn" target="_blank">📺 مشاهدة الفيديو</a>
+        <p>2️⃣ انضم إلى ديسكورد:</p>
+        <a href="https://discord.gg/XXXXXXX" class="discord-link" target="_blank">🟦 انضم الآن</a>
+        <button class="btn" onclick="showGetKey()">✅ شاهدت الفيديو وانضممت</button>
+      </div>
+      <div id="get-key-box">
+        <button class="btn" onclick="getKey()">🎯 توليد الكود</button>
+      </div>
       <div id="key-box">
         <strong>🔐 كودك:</strong>
         <div id="the-key">جارٍ التحميل...</div>
         <div>⏳ الوقت المتبقي: <span id="timer">60:00</span></div>
       </div>
     </section>
-
-    <section>
-      <h2>الأسئلة الشائعة</h2>
-      <details>
-        <summary>هل الأداة مجانية بالكامل؟</summary>
-        <p>نعم، يمكنك تحميلها واستخدامها دون أي رسوم.</p>
-      </details>
-      <details>
-        <summary>هل تدعم اللغة العربية؟</summary>
-        <p>تدعم بشكل كامل، وتشمل الواجهة والمخرجات.</p>
-      </details>
-      <details>
-        <summary>كيف أحصل على المساعدة؟</summary>
-        <p>عبر ديسكورد الرسمي المذكور بالأعلى.</p>
-      </details>
-    </section>
   </div>
-
   <footer>
-    &copy; 2025 Ａ Ｌ Ｐ Ｈ Ａ Executor | تصميم: g.Olm و darsh By-turboxx0
+    &copy; 2025 Ａ Ｌ Ｐ Ｈ Ａ Executor | جميع الحقوق محفوظة.
   </footer>
-
-  <audio autoplay loop id="player">
-    <source src="assets/music/loop.mp3" type="audio/mp3" />
-  </audio>
-
   <script>
-    // تشغيل الصوت تلقائياً
-    window.addEventListener('load', () => {
-      const player = document.getElementById('player');
-      player.muted = false;
-      player.play().catch(e => console.log("Autoplay blocked:", e));
-    });
-
-    // سلايدر صور
-    const images = [
-      "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png",
-      "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/2.png",
-      "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/3.png"
-    ];
-    let currentImageIndex = 0;
-    const imgElement = document.getElementById("alpha-image");
-    let sliderTimer;
-    function nextImage() {
-      currentImageIndex = (currentImageIndex + 1) % images.length;
-      imgElement.src = images[currentImageIndex];
-      resetTimer();
+    function showSteps() {
+      document.getElementById("steps").style.display = "block";
     }
-    function resetTimer() {
-      clearInterval(sliderTimer);
-      sliderTimer = setInterval(() => {
-        nextImage();
-      }, 10000);
+    function showGetKey() {
+      document.getElementById("get-key-box").style.display = "block";
     }
-    window.addEventListener("load", () => {
-      resetTimer();
-    });
-
-    // نظام المفتاح مع العداد
-    let timerInterval;
-
     function getKey() {
-      fetch("https://your-server.com/getkey") // ← ضع هنا رابط API الخاص بسيرفرك
+      fetch("https://your-replit-name.repl.co/getkey")
         .then(res => res.json())
         .then(data => {
           const key = data.key;
@@ -257,14 +129,14 @@
           document.getElementById("key-box").style.display = "block";
           localStorage.setItem("user_key", key);
           localStorage.setItem("start_time", Date.now());
-          startKeyTimer(3600); // 60 دقيقة
+          startKeyTimer(3600);
         })
         .catch(err => {
           alert("❌ حدث خطأ أثناء جلب الكود");
           console.error(err);
         });
     }
-
+    let timerInterval;
     function startKeyTimer(seconds) {
       let time = seconds;
       clearInterval(timerInterval);
@@ -274,14 +146,12 @@
         document.getElementById("timer").textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
         if (--time < 0) {
           clearInterval(timerInterval);
-          document.getElementById("timer").textContent = "انتهت صلاحية الكود ⛔";
+          document.getElementById("timer").textContent = "⛔ انتهت صلاحية الكود";
           localStorage.removeItem("user_key");
           localStorage.removeItem("start_time");
         }
       }, 1000);
     }
-
-    // استعادة الكود في حالة رجوع المستخدم
     window.addEventListener("load", () => {
       const key = localStorage.getItem("user_key");
       const startTime = localStorage.getItem("start_time");
