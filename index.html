@@ -81,6 +81,7 @@
       border-radius: 12px;
       box-shadow: 0 0 18px #ffaa00aa;
       cursor: pointer;
+      transition: 0.5s ease;
     }
     .discord-link {
       display: inline-block;
@@ -141,7 +142,7 @@
           id="alpha-image"
           src="https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png"
           alt="واجهة البرنامج"
-          onclick="switchImage()"
+          onclick="nextImage()"
         />
       </div>
     </section>
@@ -183,29 +184,40 @@
   </audio>
 
   <script>
-    // لإجبار التشغيل التلقائي إذا تم كتم الصوت تلقائياً
+    // تشغيل الصوت تلقائياً
     window.addEventListener('load', () => {
       const player = document.getElementById('player');
       player.muted = false;
       player.play().catch(e => console.log("Autoplay blocked:", e));
     });
 
-    // تبديل الصورة عند النقر والعودة تلقائياً بعد 10 ثوانٍ
-    let currentImage = 1;
-    let switchTimer = null;
+    // سلايدر صور
+    const images = [
+      "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png",
+      "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/2.png",
+      "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/3.png"
+    ];
 
-    function switchImage() {
-      const img = document.getElementById("alpha-image");
-      if (currentImage === 1) {
-        img.src = "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/2.png";
-        currentImage = 2;
-        clearTimeout(switchTimer);
-        switchTimer = setTimeout(() => {
-          img.src = "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png";
-          currentImage = 1;
-        }, 10000); // بعد 10 ثوانٍ
-      }
+    let currentImageIndex = 0;
+    const imgElement = document.getElementById("alpha-image");
+    let sliderTimer;
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      imgElement.src = images[currentImageIndex];
+      resetTimer();
     }
+
+    function resetTimer() {
+      clearInterval(sliderTimer);
+      sliderTimer = setInterval(() => {
+        nextImage();
+      }, 10000);
+    }
+
+    window.addEventListener("load", () => {
+      resetTimer();
+    });
   </script>
 </body>
 </html>
