@@ -66,7 +66,7 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      margin: 20px 0;
+      margin: 10px 5px;
       transition: background 0.3s ease;
     }
     .btn:hover {
@@ -122,15 +122,36 @@
     audio {
       display: none;
     }
+    #key-box {
+      display: none;
+      background: #111;
+      padding: 20px;
+      margin-top: 20px;
+      border: 2px dashed #ffd700;
+      border-radius: 10px;
+      text-align: center;
+    }
+    #the-key {
+      font-size: 1.4rem;
+      color: #ffd700;
+      margin: 10px 0;
+      display: block;
+    }
+    #timer {
+      font-size: 1.2rem;
+      color: #ffcc00;
+    }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Ａ Ｌ Ｐ Ｈ Ａ Executor</h1>
     <p>أفضل أداة لتنفيذ سكربتات Roblox بسهولة وقوة 🔥</p>
   </header>
 
   <div class="container">
+
     <section>
       <h2>معلومات عن الأداة</h2>
       <p>
@@ -138,12 +159,7 @@
         تصميم جذاب، دعم للغة العربية، وأداء لا مثيل له.
       </p>
       <div class="image-wrapper">
-        <img
-          id="alpha-image"
-          src="https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png"
-          alt="واجهة البرنامج"
-          onclick="nextImage()"
-        />
+        <img id="alpha-image" src="https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png" alt="واجهة البرنامج" onclick="nextImage()" />
       </div>
     </section>
 
@@ -155,6 +171,21 @@
       </a>
       <br />
       <a href="https://discord.com/invite/aswvUDXcp9" class="discord-link" target="_blank">🟦 انضم إلى الدعم الفني</a>
+    </section>
+
+    <section>
+      <h2>الحصول على الكود 🔑</h2>
+      <p>يجب مشاهدة الفيديو والدخول إلى الديسكورد لتفعيل الكود لمدة ساعة واحدة.</p>
+      <a href="https://www.youtube.com/watch?v=XXXXXXX" class="btn" target="_blank">📺 شاهد الفيديو</a>
+      <a href="https://discord.gg/XXXXXXX" class="discord-link" target="_blank">🟦 انضم للديسكورد</a>
+      <br><br>
+      <button class="btn" onclick="getKey()">🎟️ احصل على الكود</button>
+
+      <div id="key-box">
+        <strong>🔐 كودك:</strong>
+        <div id="the-key">جارٍ التحميل...</div>
+        <div>⏳ الوقت المتبقي: <span id="timer">60:00</span></div>
+      </div>
     </section>
 
     <section>
@@ -178,7 +209,6 @@
     &copy; 2025 Ａ Ｌ Ｐ Ｈ Ａ Executor | تصميم: g.Olm و darsh By-turboxx0
   </footer>
 
-  <!-- صوت تلقائي -->
   <audio autoplay loop id="player">
     <source src="assets/music/loop.mp3" type="audio/mp3" />
   </audio>
@@ -197,26 +227,75 @@
       "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/2.png",
       "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/3.png"
     ];
-
     let currentImageIndex = 0;
     const imgElement = document.getElementById("alpha-image");
     let sliderTimer;
-
     function nextImage() {
       currentImageIndex = (currentImageIndex + 1) % images.length;
       imgElement.src = images[currentImageIndex];
       resetTimer();
     }
-
     function resetTimer() {
       clearInterval(sliderTimer);
       sliderTimer = setInterval(() => {
         nextImage();
       }, 10000);
     }
-
     window.addEventListener("load", () => {
       resetTimer();
+    });
+
+    // نظام المفتاح مع العداد
+    let timerInterval;
+
+    function getKey() {
+      fetch("https://your-server.com/getkey") // ← ضع هنا رابط API الخاص بسيرفرك
+        .then(res => res.json())
+        .then(data => {
+          const key = data.key;
+          document.getElementById("the-key").textContent = key;
+          document.getElementById("key-box").style.display = "block";
+          localStorage.setItem("user_key", key);
+          localStorage.setItem("start_time", Date.now());
+          startKeyTimer(3600); // 60 دقيقة
+        })
+        .catch(err => {
+          alert("❌ حدث خطأ أثناء جلب الكود");
+          console.error(err);
+        });
+    }
+
+    function startKeyTimer(seconds) {
+      let time = seconds;
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        let mins = Math.floor(time / 60);
+        let secs = time % 60;
+        document.getElementById("timer").textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+        if (--time < 0) {
+          clearInterval(timerInterval);
+          document.getElementById("timer").textContent = "انتهت صلاحية الكود ⛔";
+          localStorage.removeItem("user_key");
+          localStorage.removeItem("start_time");
+        }
+      }, 1000);
+    }
+
+    // استعادة الكود في حالة رجوع المستخدم
+    window.addEventListener("load", () => {
+      const key = localStorage.getItem("user_key");
+      const startTime = localStorage.getItem("start_time");
+      if (key && startTime) {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        if (elapsed < 3600) {
+          document.getElementById("the-key").textContent = key;
+          document.getElementById("key-box").style.display = "block";
+          startKeyTimer(3600 - elapsed);
+        } else {
+          localStorage.removeItem("user_key");
+          localStorage.removeItem("start_time");
+        }
+      }
     });
   </script>
 </body>
