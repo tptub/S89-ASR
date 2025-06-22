@@ -158,6 +158,12 @@
     </section>
 
     <section>
+      <h2>الحصول على كود مجاني</h2>
+      <button class="btn" onclick="getFreeKey()">🔑 احصل على كود مجاني لمدة ساعة</button>
+      <p id="key-result" style="margin-top:10px; font-weight:bold;"></p>
+    </section>
+
+    <section>
       <h2>الأسئلة الشائعة</h2>
       <details>
         <summary>هل الأداة مجانية بالكامل؟</summary>
@@ -191,13 +197,12 @@
       player.play().catch(e => console.log("Autoplay blocked:", e));
     });
 
-    // سلايدر صور
+    // سلايدر صور تلقائي
     const images = [
       "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png",
       "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/2.png",
       "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/3.png"
     ];
-
     let currentImageIndex = 0;
     const imgElement = document.getElementById("alpha-image");
     let sliderTimer;
@@ -210,14 +215,29 @@
 
     function resetTimer() {
       clearInterval(sliderTimer);
-      sliderTimer = setInterval(() => {
-        nextImage();
-      }, 10000);
+      sliderTimer = setInterval(nextImage, 10000);
     }
 
-    window.addEventListener("load", () => {
-      resetTimer();
-    });
+    window.addEventListener("load", resetTimer);
+
+    // API كود مجاني من
+    async function getFreeKey() {
+      const result = document.getElementById("key-result");
+      result.textContent = "⏳ جاري توليد الكود...";
+      try {
+        const res = await fetch("https://alpha-api-295h.onrender.com/generate-key", {
+          method: "POST"
+        });
+        const data = await res.json();
+        if (data.success) {
+          result.textContent = "✅ كودك: " + data.key;
+        } else {
+          result.textContent = "❌ فشل في توليد الكود.";
+        }
+      } catch (e) {
+        result.textContent = "❌ حدث خطأ في الاتصال.";
+      }
+    }
   </script>
 </body>
 </html>
