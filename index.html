@@ -80,6 +80,7 @@
       max-width: 100%;
       border-radius: 12px;
       box-shadow: 0 0 18px #ffaa00aa;
+      cursor: pointer;
     }
     .discord-link {
       display: inline-block;
@@ -136,7 +137,12 @@
         تصميم جذاب، دعم للغة العربية، وأداء لا مثيل له.
       </p>
       <div class="image-wrapper">
-        <img src="https://github.com/tptub/fille_min/blob/main/3123.png?raw=true" alt="واجهة البرنامج" />
+        <img
+          id="alpha-image"
+          src="https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png"
+          alt="واجهة البرنامج"
+          onclick="switchImage()"
+        />
       </div>
     </section>
 
@@ -183,6 +189,23 @@
       player.muted = false;
       player.play().catch(e => console.log("Autoplay blocked:", e));
     });
+
+    // تبديل الصورة عند النقر والعودة تلقائياً بعد 10 ثوانٍ
+    let currentImage = 1;
+    let switchTimer = null;
+
+    function switchImage() {
+      const img = document.getElementById("alpha-image");
+      if (currentImage === 1) {
+        img.src = "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/2.png";
+        currentImage = 2;
+        clearTimeout(switchTimer);
+        switchTimer = setTimeout(() => {
+          img.src = "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png";
+          currentImage = 1;
+        }, 10000); // بعد 10 ثوانٍ
+      }
+    }
   </script>
 </body>
 </html>
