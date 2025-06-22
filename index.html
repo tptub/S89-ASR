@@ -61,11 +61,9 @@
       margin: 10px 0;
     }
     .discord-link:hover { background: #4752c4; }
-    #key-box, #steps, #get-key-box {
+    #key-box {
       margin-top: 20px;
       display: none;
-    }
-    #key-box {
       background: #111;
       border: 2px dashed #ffd700;
       border-radius: 10px;
@@ -91,20 +89,26 @@
   </header>
   <div class="container">
     <section>
-      <h2>الحصول على الكود 🔑</h2>
-      <button class="btn" onclick="showSteps()">🎟️ احصل على كود مجاني</button>
-      <div id="steps">
-        <p>1️⃣ شاهد هذا الفيديو:</p>
-        <a href="https://www.youtube.com/watch?v=XXXXXXX" class="btn" target="_blank">📺 مشاهدة الفيديو</a>
-        <p>2️⃣ انضم إلى ديسكورد:</p>
-        <a href="https://discord.gg/XXXXXXX" class="discord-link" target="_blank">🟦 انضم الآن</a>
-        <button class="btn" onclick="showGetKey()">✅ شاهدت الفيديو وانضممت</button>
-      </div>
-      <div id="get-key-box">
-        <button class="btn" onclick="getKey()">🎯 توليد الكود</button>
-      </div>
+      <h2>معلومات عن الأداة</h2>
+      <p>
+        Ａ Ｌ Ｐ Ｈ Ａ Executor تعتمد على WeAreDevs API لتوفر لك إمكانيات تنفيذ السكربتات بلغة Lua داخل Roblox.
+        تصميم جذاب، دعم للغة العربية، وأداء لا مثيل له.
+      </p>
+    </section>
+    <section>
+      <h2>تحميل الأداة</h2>
+      <p>اضغط الزر لتحميل آخر إصدار من الأداة مباشرة:</p>
+      <a href="https://github.com/tptub/-Executor-wep/raw/main/ALPHA%20Executor.zip" class="btn" download>
+        ⬇️ تحميل Ａ Ｌ Ｐ Ｈ Ａ Executor
+      </a>
+      <br />
+      <a href="https://discord.com/invite/XXXXXXX" class="discord-link" target="_blank">🟦 انضم إلى الدعم الفني</a>
+    </section>
+    <section>
+      <h2>الحصول على مفتاح التفعيل</h2>
+      <button class="btn" onclick="getKey()">🎯 احصل على مفتاح</button>
       <div id="key-box">
-        <strong>🔐 كودك:</strong>
+        <strong>🔐 مفتاحك:</strong>
         <div id="the-key">جارٍ التحميل...</div>
         <div>⏳ الوقت المتبقي: <span id="timer">60:00</span></div>
       </div>
@@ -114,12 +118,6 @@
     &copy; 2025 Ａ Ｌ Ｐ Ｈ Ａ Executor | جميع الحقوق محفوظة.
   </footer>
   <script>
-    function showSteps() {
-      document.getElementById("steps").style.display = "block";
-    }
-    function showGetKey() {
-      document.getElementById("get-key-box").style.display = "block";
-    }
     function getKey() {
       fetch("https://your-replit-name.repl.co/getkey")
         .then(res => res.json())
@@ -146,7 +144,7 @@
         document.getElementById("timer").textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
         if (--time < 0) {
           clearInterval(timerInterval);
-          document.getElementById("timer").textContent = "⛔ انتهت صلاحية الكود";
+          document.getElementById("timer").textContent = "⛔ انتهت صلاحية المفتاح";
           localStorage.removeItem("user_key");
           localStorage.removeItem("start_time");
         }
