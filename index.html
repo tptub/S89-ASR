@@ -97,6 +97,9 @@
     .discord-link:hover {
       background: #4752c4;
     }
+    .music-control {
+      margin-top: 20px;
+    }
     footer {
       margin-top: auto;
       padding: 20px;
@@ -118,9 +121,6 @@
     }
     summary:hover {
       color: white;
-    }
-    audio {
-      display: none;
     }
   </style>
 </head>
@@ -172,26 +172,43 @@
         <p>عبر ديسكورد الرسمي المذكور بالأعلى.</p>
       </details>
     </section>
+
+    <div class="music-control">
+      <button onclick="toggleMusic()" class="btn" id="musicBtn">⏸️ إيقاف الموسيقى</button>
+    </div>
   </div>
 
   <footer>
     &copy; 2025 Ｖ Ｉ Ｒ Ｕ Ｓ Executor | تصميم: g.Olm 
   </footer>
 
-  <!-- ✅ تشغيل الموسيقى من GitHub -->
+  <!-- 🎵 الصوت من نفس مجلد index.html -->
   <audio autoplay loop id="player">
-    <source src="https://raw.githubusercontent.com/tptub/fille_min/main/loop.mp3" type="audio/mp3" />
+    <source src="MARWAN-PABLO-RACORE-_Prod.-by-Hady_-_-مروان-بابلو-راكور-_online-video-cutter.com__1_.mp3" type="audio/mp3" />
   </audio>
 
   <script>
-    // تشغيل الصوت تلقائياً
+    const player = document.getElementById('player');
+    const musicBtn = document.getElementById('musicBtn');
+
+    // تشغيل تلقائي
     window.addEventListener('load', () => {
-      const player = document.getElementById('player');
       player.muted = false;
       player.play().catch(e => console.log("Autoplay blocked:", e));
     });
 
-    // سلايدر صور تلقائي
+    // تبديل التشغيل / الإيقاف
+    function toggleMusic() {
+      if (player.paused) {
+        player.play();
+        musicBtn.innerText = "⏸️ إيقاف الموسيقى";
+      } else {
+        player.pause();
+        musicBtn.innerText = "▶️ تشغيل الموسيقى";
+      }
+    }
+
+    // سلايدر الصور
     const images = [
       "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png",
       "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/2.png",
