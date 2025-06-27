@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ＶＩＲＵＳ Hub V8</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
+  <title>VIRUS Executor V8</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -12,192 +12,148 @@
       box-sizing: border-box;
       font-family: 'Cairo', sans-serif;
     }
-    body {
-      background: linear-gradient(135deg, #2c003e, #0f0f2b);
-      color: #fff;
-      min-height: 100vh;
-      padding: 30px;
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-    .glass-box {
-      backdrop-filter: blur(8px);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 25px;
-      width: 100%;
-      max-width: 900px;
-      box-shadow: 0 0 20px #7f00ff66;
-      margin-bottom: 30px;
-    }
-    header h1 {
-      font-size: 3.2rem;
-      color: #ffb400;
+      justify-content: center;
       text-align: center;
-      margin-bottom: 10px;
-      text-shadow: 0 0 15px #ffb40099;
-    }
-    header p {
-      text-align: center;
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-    h2 {
-      color: #ffb400;
-      margin-bottom: 10px;
-      border-bottom: 2px dashed #ffb40077;
-      padding-bottom: 5px;
-    }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #ddd;
-    }
-    .btn {
-      background: #ffb400;
-      color: #111;
-      padding: 12px 26px;
-      border-radius: 10px;
-      border: none;
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin-top: 20px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #ff9800;
-    }
-    .discord-link {
-      display: inline-block;
-      margin-top: 15px;
-      background: #7289da;
-      padding: 10px 20px;
-      border-radius: 8px;
       color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s ease;
-    }
-    .discord-link:hover {
-      background: #5b6eae;
-    }
-    .image-wrapper img {
-      max-width: 100%;
-      border-radius: 14px;
-      margin-top: 20px;
-      box-shadow: 0 0 12px #ffb40088;
-      transition: 0.4s;
-      cursor: pointer;
-    }
-    summary {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #ffcc00;
-      cursor: pointer;
-    }
-    details {
-      background: rgba(255, 255, 255, 0.07);
-      padding: 15px;
-      margin-top: 12px;
-      border-radius: 10px;
-    }
-    footer {
-      text-align: center;
-      margin-top: auto;
-      font-size: 0.9rem;
-      color: #aaa;
+      background: rgba(0, 0, 0, 0.4);
       padding: 20px;
     }
-    .music-control {
-      margin-top: 25px;
+
+    h1 {
+      font-size: 3.5rem;
+      color: #00ffff;
+      text-shadow: 0 0 15px #00ffff88;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background: #00ffff;
+      color: #000;
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #00dddd;
+    }
+
+    .discord-btn {
+      background: #5865F2;
+      color: white;
+    }
+
+    .discord-btn:hover {
+      background: #4752c4;
+    }
+
+    .sound-control {
+      margin-top: 30px;
+    }
+
+    /* ✨ اهتزاز واضح وبسيط */
+    @keyframes shake {
+      0%   { transform: translate(0px, 0px); }
+      20%  { transform: translate(-4px, 2px); }
+      40%  { transform: translate(3px, -3px); }
+      60%  { transform: translate(-4px, 4px); }
+      80%  { transform: translate(2px, -2px); }
+      100% { transform: translate(0px, 0px); }
+    }
+
+    .shaky {
+      animation: shake 0.8s infinite ease-in-out;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>ＶＩＲＵＳ Hub V8</h1>
-    <p>واجهة احترافية لتنفيذ سكربتات Roblox 🔥</p>
-  </header>
 
-  <div class="glass-box">
-    <h2>معلومات الأداة</h2>
-    <p>
-      تم تصميم ＶＩＲＵＳ Hub لتقديم بيئة احترافية وآمنة لتنفيذ سكربتات Roblox.
-      مع دعم كامل للغة العربية، وسلاسة في الاستخدام.
-    </p>
-    <div class="image-wrapper">
-      <img id="mainImage" src="https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png" onclick="nextImage()" alt="صورة من داخل البرنامج">
+  <!-- 🎥 فيديو الخلفية -->
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="https://github.com/tptub/fille_min/raw/refs/heads/main/voued.mp4" type="video/mp4" />
+  </video>
+
+  <!-- 🎵 الصوت -->
+  <audio id="bg-music" loop>
+    <source src="MARWAN-PABLO-RACORE-_Prod.-by-Hady_-_-مروان-بابلو-راكور-_online-video-cutter.com__1_.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- 💥 المحتوى -->
+  <div class="content">
+    <h1 class="shaky">VIRUS Executor V8</h1>
+    <a class="btn shaky" href="https://github.com/tptub/fille_min/raw/refs/heads/main/%D8%A7%D9%84%D8%A8%D8%A7%D8%B3%D9%88%D8%B1%D8%AF%20%20%20%20123.zip" download>⬇️ تحميل الأداة</a>
+    <a class="btn discord-btn shaky" href="https://discord.gg/xsFVSax7xB" target="_blank">💬 دعم Discord</a>
+
+    <div class="sound-control">
+      <button class="btn shaky" onclick="toggleMusic()" id="musicBtn">⏸️ إيقاف الصوت</button>
     </div>
   </div>
 
-  <div class="glass-box">
-    <h2>تحميل الأداة</h2>
-    <p>اضغط الزر لتحميل آخر إصدار:</p>
-    <a class="btn" href="https://github.com/tptub/fille_min/raw/refs/heads/main/%D8%A7%D9%84%D8%A8%D8%A7%D8%B3%D9%88%D8%B1%D8%AF%20%20%20%20123.zip" download>⬇️ تحميل الأداة (كلمة السر: 123)</a>
-    <br>
-    <a href="https://discord.gg/xsFVSax7xB" target="_blank" class="discord-link">🟦 انضم إلى مجتمع الدعم</a>
-  </div>
-
-  <div class="glass-box">
-    <h2>الأسئلة الشائعة</h2>
-    <details>
-      <summary>هل الأداة مجانية؟</summary>
-      <p>نعم، الأداة مجانية بالكامل دون أي قيود.</p>
-    </details>
-    <details>
-      <summary>هل تدعم اللغة العربية؟</summary>
-      <p>نعم، جميع القوائم والمخرجات بالعربية.</p>
-    </details>
-    <details>
-      <summary>كيف أتواصل مع الدعم؟</summary>
-      <p>عبر سيرفر الديسكورد الرسمي.</p>
-    </details>
-  </div>
-
-  <div class="music-control">
-    <button onclick="toggleMusic()" class="btn" id="musicToggle">⏸️ إيقاف الموسيقى</button>
-  </div>
-
-  <footer>
-    &copy; 2025 VIRUS Hub | تصميم: g.Olm
-  </footer>
-
-  <audio autoplay loop id="music">
-    <source src="MARWAN-PABLO-RACORE-_Prod.-by-Hady_-_-مروان-بابلو-راكور-_online-video-cutter.com__1_.mp3" type="audio/mp3" />
-  </audio>
-
+  <!-- 🎯 التحكم بالصوت -->
   <script>
-    const music = document.getElementById("music");
-    const musicToggle = document.getElementById("musicToggle");
+    const audio = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("musicBtn");
+
+    // الصوت يزيد تدريجيًا
+    function fadeInAudio() {
+      audio.volume = 0;
+      audio.play().catch(() => {});
+      let vol = 0;
+      const fade = setInterval(() => {
+        if (vol < 1) {
+          vol += 0.01;
+          audio.volume = Math.min(vol, 1);
+        } else {
+          clearInterval(fade);
+        }
+      }, 100); // كل 0.1 ثانية
+    }
+
+    window.addEventListener("load", () => {
+      audio.muted = false;
+      fadeInAudio();
+    });
 
     function toggleMusic() {
-      if (music.paused) {
-        music.play();
-        musicToggle.textContent = "⏸️ إيقاف الموسيقى";
+      if (audio.paused) {
+        fadeInAudio();
+        musicBtn.innerText = "⏸️ إيقاف الصوت";
       } else {
-        music.pause();
-        musicToggle.textContent = "▶️ تشغيل الموسيقى";
+        audio.pause();
+        musicBtn.innerText = "▶️ تشغيل الصوت";
       }
     }
-
-    const imgList = [
-      "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/1.png",
-      "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/2.png",
-      "https://raw.githubusercontent.com/tptub/fille_min/refs/heads/main/3.png"
-    ];
-    let index = 0;
-    const imgTag = document.getElementById("mainImage");
-
-    function nextImage() {
-      index = (index + 1) % imgList.length;
-      imgTag.src = imgList[index];
-    }
-    setInterval(nextImage, 12000);
   </script>
+
 </body>
 </html>
