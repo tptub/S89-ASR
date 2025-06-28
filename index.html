@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VIRUS Executor V8</title>
+  <title>VIRUS tool</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -15,7 +15,8 @@
 
     html, body {
       height: 100%;
-      overflow: hidden;
+      background-color: #000;
+      overflow-x: hidden;
     }
 
     #bg-video {
@@ -25,100 +26,171 @@
       min-width: 100%;
       min-height: 100%;
       object-fit: cover;
-      z-index: -2;
+      z-index: -1;
+      filter: brightness(0.15);
     }
 
     .content {
       position: relative;
       z-index: 2;
-      height: 100%;
-      width: 100%;
+      min-height: 100%;
+      padding: 30px 20px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #00ff00;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      color: white;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 20px;
+      backdrop-filter: blur(5px);
     }
 
     h1 {
-      font-size: 3.5rem;
-      color: #00ffff;
-      text-shadow: 0 0 15px #00ffff88;
-      margin-bottom: 20px;
+      font-size: 3rem;
+      margin-bottom: 30px;
+      border-right: 3px solid #00ff00;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards, blink 0.7s step-end infinite;
+      text-shadow: 0 0 10px #00ff00;
     }
 
-    .btn {
-      background: #00ffff;
-      color: #000;
-      padding: 12px 24px;
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #00ff00; }
+    }
+
+    .terminal-btn {
+      background: rgba(0, 0, 0, 0.5);
+      color: #00ff00;
+      padding: 12px 30px;
       margin: 10px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
+      font-size: 1rem;
+      border: 2px solid #00ff00;
+      border-radius: 12px;
       text-decoration: none;
+      display: inline-block;
       transition: 0.3s;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 12px #00ff0066;
     }
 
-    .btn:hover {
-      background: #00dddd;
+    .terminal-btn::after {
+      content: '';
+      position: absolute;
+      top: -5px; left: -5px;
+      right: -5px; bottom: -5px;
+      border-radius: 14px;
+      border: 2px dashed #00ff00;
+      animation: pulse 2s infinite;
+      opacity: 0.3;
     }
 
-    .discord-btn {
-      background: #5865F2;
-      color: white;
+    .terminal-btn:hover {
+      background: #00ff00;
+      color: #000;
+      box-shadow: 0 0 25px #00ff00;
     }
 
-    .discord-btn:hover {
-      background: #4752c4;
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.05); opacity: 0.6; }
+      100% { transform: scale(1); opacity: 0.3; }
+    }
+
+    .tool-section {
+      margin-top: 40px;
+      width: 100%;
+      max-width: 650px;
+    }
+
+    .tool-box {
+      background: rgba(0, 255, 0, 0.05);
+      border: 1px dashed #00ff00;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #00ff0055;
+      backdrop-filter: blur(3px);
+    }
+
+    .tool-box h3 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+      color: #00ff00;
+      text-shadow: 0 0 6px #00ff00;
     }
 
     .sound-control {
       margin-top: 30px;
     }
 
-    @keyframes shake {
-      0%   { transform: translate(0px, 0px); }
-      20%  { transform: translate(-4px, 2px); }
-      40%  { transform: translate(3px, -3px); }
-      60%  { transform: translate(-4px, 4px); }
-      80%  { transform: translate(2px, -2px); }
-      100% { transform: translate(0px, 0px); }
+    .sound-control button {
+      background: rgba(0, 0, 0, 0.5);
+      color: #00ff00;
+      border: 1px solid #00ff00;
+      padding: 10px 25px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ff00;
+      font-size: 1rem;
     }
 
-    .shaky {
-      animation: shake 0.8s infinite ease-in-out;
+    .sound-control button:hover {
+      background: #00ff00;
+      color: #000;
+      box-shadow: 0 0 20px #00ff00;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .terminal-btn { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🎥 فيديو الخلفية -->
   <video id="bg-video" autoplay muted loop playsinline>
     <source src="https://github.com/tptub/fille_min/raw/refs/heads/main/voued.mp4" type="video/mp4" />
   </video>
 
-  <!-- 🎵 الصوت -->
   <audio id="bg-music" loop>
     <source src="MARWAN-PABLO-RACORE-_Prod.-by-Hady_-_-مروان-بابلو-راكور-_online-video-cutter.com__1_.mp3" type="audio/mp3">
   </audio>
 
-  <!-- 💥 المحتوى -->
   <div class="content">
-    <h1 class="shaky">VIRUS Executor V8</h1>
-    <a class="btn shaky" href="https://github.com/tptub/fille_min/raw/refs/heads/main/%D8%A7%D9%84%D8%A8%D8%A7%D8%B3%D9%88%D8%B1%D8%AF%20%20%20%20123.zip" download>⬇️ROBLOX HAX VIRUS </a>
-    <a class="btn discord-btn shaky" href="https://discord.gg/xsFVSax7xB" target="_blank">Get Key</a>
+    <h1>...ToOLＶＩＲＵＳ </h1>
+
+    <a class="terminal-btn" href="https://github.com/tptub/fille_min/raw/refs/heads/main/%D8%A7%D9%84%D8%A8%D8%A7%D8%B3%D9%88%D8%B1%D8%AF%20%20%20%20123.zip" download>
+      🧨 تحميل أداة ROBLOX VIRUS
+    </a>
+
+    <div class="tool-section">
+      <div class="tool-box">
+        <h3>🔍 أداة الاختراق الخفي</h3>
+        <a class="terminal-btn" href="https://example.com/stealth-tool.zip" download>تحميل الأداة</a>
+      </div>
+      <div class="tool-box">
+        <h3>🛰️ أداة تتبع اللاعبين</h3>
+        <a class="terminal-btn" href="https://example.com/track-tool.zip" download>تحميل الأداة</a>
+      </div>
+      <div class="tool-box">
+        <h3>📂 أداة استخراج الملفات</h3>
+        <a class="terminal-btn" href="https://example.com/extract-tool.zip" download>تحميل الأداة</a>
+      </div>
+    </div>
 
     <div class="sound-control">
-      <button class="btn shaky" onclick="toggleMusic()" id="musicBtn">⏸️ إيقاف الصوت</button>
+      <button onclick="toggleMusic()" id="musicBtn">⏸️ إيقاف الصوت</button>
     </div>
   </div>
 
-  <!-- 🎯 التحكم -->
   <script>
     const audio = document.getElementById("bg-music");
     const musicBtn = document.getElementById("musicBtn");
@@ -140,18 +212,6 @@
     window.addEventListener("load", () => {
       audio.muted = false;
       fadeInAudio();
-
-      // ✅ التبديل للفيديو الخفيف على الجوال أو الشاشات الصغيرة
-      function isMobile() {
-        return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      }
-
-      if (isMobile() || window.innerWidth <= 768) {
-        const bgVideo = document.getElementById("bg-video");
-        const source = bgVideo.querySelector("source");
-        source.src = "https://github.com/tptub/fille_min/raw/refs/heads/main/voued_mobile.mp4";
-        bgVideo.load();
-      }
     });
 
     function toggleMusic() {
