@@ -118,7 +118,7 @@
     </div>
   </div>
 
-  <!-- 🎯 التحكم بالصوت وتبديل الفيديو -->
+  <!-- 🎯 التحكم -->
   <script>
     const audio = document.getElementById("bg-music");
     const musicBtn = document.getElementById("musicBtn");
@@ -141,7 +141,7 @@
       audio.muted = false;
       fadeInAudio();
 
-      // ✅ فحص نوع الجهاز أو أبعاد الشاشة
+      // ✅ التبديل للفيديو الخفيف على الجوال أو الشاشات الصغيرة
       function isMobile() {
         return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       }
@@ -149,7 +149,7 @@
       if (isMobile() || window.innerWidth <= 768) {
         const bgVideo = document.getElementById("bg-video");
         const source = bgVideo.querySelector("source");
-        source.src = "https://github.com/tptub/fille_min/raw/refs/heads/main/voued(1).mp4";
+        source.src = "https://github.com/tptub/fille_min/raw/refs/heads/main/voued_mobile.mp4";
         bgVideo.load();
       }
     });
