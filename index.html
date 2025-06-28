@@ -118,7 +118,7 @@
     </div>
   </div>
 
-  <!-- 🎯 التحكم بالصوت وتغيير الفيديو في الجوال -->
+  <!-- 🎯 التحكم بالصوت وتبديل الفيديو -->
   <script>
     const audio = document.getElementById("bg-music");
     const musicBtn = document.getElementById("musicBtn");
@@ -141,12 +141,12 @@
       audio.muted = false;
       fadeInAudio();
 
-      // ✅ إذا الجهاز جوال، نبدل الفيديو
+      // ✅ فحص نوع الجهاز أو أبعاد الشاشة
       function isMobile() {
         return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       }
 
-      if (isMobile()) {
+      if (isMobile() || window.innerWidth <= 768) {
         const bgVideo = document.getElementById("bg-video");
         const source = bgVideo.querySelector("source");
         source.src = "https://github.com/tptub/fille_min/raw/refs/heads/main/voued(1).mp4";
