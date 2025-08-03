@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <title>S89 - Fast Flag Roblox</title>
@@ -18,6 +18,7 @@
       justify-content: center;
       height: 100vh;
       overflow: hidden;
+      position: relative;
     }
 
     @keyframes gradientBG {
@@ -38,7 +39,7 @@
       padding: 30px;
       border-radius: 15px;
       max-width: 500px;
-      text-align: right;
+      text-align: left;
       backdrop-filter: blur(10px);
       box-shadow: 0 0 20px #0ff;
     }
@@ -77,36 +78,56 @@
       border-radius: 50px;
       backdrop-filter: blur(5px);
     }
+
+    #langBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: 2px solid #0ff;
+      color: #0ff;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 50px;
+      backdrop-filter: blur(5px);
+    }
   </style>
 </head>
 <body>
+  <button id="langBtn">🌐 العربية</button>
+
   <h1>S89</h1>
   <div class="card">
-    <p>🚀 الإصدار الجديد: حماية قوية وإخفاء ملفات ضد الـ Chekers</p>
-    <p>✨ التخصص: Fast Flag Roblox</p>
-    <p>🛡️ حماية كاملة وسرعة تفعيل الأكواد</p>
+    <p>🚀 New Version: Strong Protection & Anti-Chekers Files Hide</p>
+    <p>✨ Specialization: Fast Flag Roblox</p>
+    <p>🛡️ Full Protection & Fast Code Activation</p>
   </div>
 
-  <a class="btn" href="https://discord.gg/VhUC2EGuHq" target="_blank">💎 الدعم الفني وشراء الأكواد</a>
+  <a class="btn" href="https://discord.gg/VhUC2EGuHq" target="_blank">💎 Support & Buy Codes</a>
 
-  <button id="muteBtn">🔈 إيقاف الأغنية</button>
+  <button id="muteBtn">🔈 Mute Music</button>
 
   <audio id="bgMusic" autoplay loop>
     <source src="Luxor.mp3" type="audio/mpeg">
-    متصفحك لا يدعم تشغيل الصوت.
+    Your browser does not support audio.
   </audio>
 
   <script>
     const music = document.getElementById('bgMusic');
-    const btn = document.getElementById('muteBtn');
-    btn.onclick = function() {
+    const muteBtn = document.getElementById('muteBtn');
+    muteBtn.onclick = function() {
       if (music.muted) {
         music.muted = false;
-        btn.textContent = '🔈 إيقاف الأغنية';
+        muteBtn.textContent = '🔈 Mute Music';
       } else {
         music.muted = true;
-        btn.textContent = '🔇 تشغيل الأغنية';
+        muteBtn.textContent = '🔇 Unmute Music';
       }
+    };
+
+    const langBtn = document.getElementById('langBtn');
+    langBtn.onclick = function() {
+      alert("🔄 اللغة العربية قيد الإنشاء!"); 
     };
   </script>
 </body>
