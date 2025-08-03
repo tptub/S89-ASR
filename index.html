@@ -1,56 +1,98 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <title>S89 - Fast Flag Roblox & Files Hide</title>
+  <title>S89 - Fast Flag Roblox</title>
   <style>
     body {
-      background-color: #000;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #000000, #0f0f0f, #001f1f, #002f2f);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
       color: #0ff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
     }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
     h1 {
-      font-size: 48px;
+      font-size: 50px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #0ff;
     }
-    p {
-      font-size: 20px;
+
+    .card {
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid #0ff;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 500px;
+      text-align: right;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px #0ff;
     }
-    a {
-      display: inline-block;
+
+    .card p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .btn {
       margin-top: 30px;
-      padding: 15px 30px;
-      background-color: #0ff;
+      padding: 15px 40px;
+      background: #0ff;
       color: #000;
       text-decoration: none;
-      border-radius: 8px;
       font-weight: bold;
+      border-radius: 50px;
+      transition: 0.3s;
+      box-shadow: 0 0 20px #0ff;
     }
+
+    .btn:hover {
+      background: #00cccc;
+      box-shadow: 0 0 40px #0ff;
+    }
+
     #muteBtn {
-      margin-top: 20px;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
       background: none;
       border: 2px solid #0ff;
       color: #0ff;
       padding: 10px 20px;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 50px;
+      backdrop-filter: blur(5px);
     }
   </style>
 </head>
 <body>
-  <h1>S89 - Fast Flag Roblox & Files Hide</h1>
-  <p>🚀 الإصدار الجديد: حماية قوية وإخفاء ملفات ضد الـ Chekers</p>
-  <p>✨ التخصص: Fast Flag Roblox</p>
-  <p>🛡️ حماية كاملة وسرعة تفعيل الأكواد</p>
-  
-  <a href="https://discord.gg/VhUC2EGuHq" target="_blank">💎 الدعم الفني وشراء الأكواد</a>
-  
-  <br><br>
+  <h1>S89</h1>
+  <div class="card">
+    <p>🚀 الإصدار الجديد: حماية قوية وإخفاء ملفات ضد الـ Chekers</p>
+    <p>✨ التخصص: Fast Flag Roblox</p>
+    <p>🛡️ حماية كاملة وسرعة تفعيل الأكواد</p>
+  </div>
+
+  <a class="btn" href="https://discord.gg/VhUC2EGuHq" target="_blank">💎 الدعم الفني وشراء الأكواد</a>
+
   <button id="muteBtn">🔈 إيقاف الأغنية</button>
-  
+
   <audio id="bgMusic" autoplay loop>
-    <source src="YOUR_SONG_LINK_HERE.mp3" type="audio/mpeg">
+    <source src="Luxor.mp3" type="audio/mpeg">
     متصفحك لا يدعم تشغيل الصوت.
   </audio>
 
