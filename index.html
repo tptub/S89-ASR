@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <title>S89 - Fast Flag Roblox</title>
+  <title>S89</title>
   <style>
     body {
       margin: 0;
@@ -17,7 +17,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      overflow: hidden;
+      overflow: auto;
       position: relative;
     }
 
@@ -38,15 +38,11 @@
       border: 1px solid #0ff;
       padding: 30px;
       border-radius: 15px;
-      max-width: 500px;
+      max-width: 800px;
       text-align: left;
       backdrop-filter: blur(10px);
       box-shadow: 0 0 20px #0ff;
-    }
-
-    .card p {
-      font-size: 18px;
-      margin: 10px 0;
+      margin: 20px;
     }
 
     .btn {
@@ -67,49 +63,103 @@
       box-shadow: 0 0 40px #0ff;
     }
 
-    #muteBtn {
+    #muteBtn, #langBtn {
       position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: none;
-      border: 2px solid #0ff;
-      color: #0ff;
       padding: 10px 20px;
       cursor: pointer;
       border-radius: 50px;
       backdrop-filter: blur(5px);
+      border: 2px solid #0ff;
+      background: none;
+      color: #0ff;
+    }
+
+    #muteBtn {
+      bottom: 20px;
+      left: 20px;
     }
 
     #langBtn {
-      position: fixed;
       top: 20px;
       right: 20px;
-      background: none;
-      border: 2px solid #0ff;
-      color: #0ff;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 50px;
-      backdrop-filter: blur(5px);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    h2 {
+      margin-top: 0;
+      text-shadow: 0 0 5px #0ff;
     }
   </style>
 </head>
 <body>
   <button id="langBtn">🌐 العربية</button>
-
   <h1>S89</h1>
-  <div class="card">
+
+  <div class="card" id="introCard">
     <p>🚀 New Version: Strong Protection & Anti-Chekers Files Hide</p>
     <p>✨ Specialization: Fast Flag Roblox</p>
     <p>🛡️ Full Protection & Fast Code Activation</p>
   </div>
 
-  <!-- زر التحميل -->
+  <div class="card" id="featuresCard">
+    <h2>⚙️ S89 v2 Features</h2>
+
+    <p><strong>📦 Lighting & Rendering</strong></p>
+    <ul>
+      <li>🌇 Voxel / Shadowmap / Future Lighting</li>
+      <li>🖥️ Vulkan, OpenGL, DirectX, Metal</li>
+      <li>🎮 Graphics Modes: Low, High, Ultra</li>
+      <li>🧊 Disable Shadows & Wind Effects</li>
+      <li>📏 Control Render Distance</li>
+      <li>🎨 Texture Quality: High / Low</li>
+    </ul>
+
+    <p><strong>🚀 Performance Boost</strong></p>
+    <ul>
+      <li>🚀 HyperThreading Support</li>
+      <li>🧠 CPU Threads Control</li>
+      <li>🔥 Boost FPS + Ultra Kill Graphics</li>
+      <li>💡 Light Update Limiter</li>
+      <li>📉 FPS Counter + Crash Fixes</li>
+    </ul>
+
+    <p><strong>🧍 UI & Avatar</strong></p>
+    <ul>
+      <li>🧍 Hip Height Control</li>
+      <li>🖼️ Hide GUI / PostFX / Bubble Chat</li>
+      <li>👤 Avatar Outline + Xray</li>
+      <li>📷 Disable Self View</li>
+      <li>✅ Verified Badge (Client-Sided)</li>
+    </ul>
+
+    <p><strong>🧠 Smart Controls</strong></p>
+    <ul>
+      <li>🔊 Voice Chat Distance</li>
+      <li>🛒 Block In-Game Purchases</li>
+      <li>📡 Fake Lag / Freeze / Desync</li>
+      <li>👻 Invisible Modes</li>
+      <li>🔧 Network Ownership Tools</li>
+    </ul>
+
+    <p><strong>🧩 Extras</strong></p>
+    <ul>
+      <li>🌐 In-Game Web Browser</li>
+      <li>🎮 Quick Game Launch</li>
+      <li>📝 Custom Kick Message</li>
+      <li>🛑 Block Remote Events</li>
+      <li>🎛️ Fast Flag Packs (Ping / FPS)</li>
+    </ul>
+  </div>
+
   <a class="btn" href="https://github.com/tptub/S89-ASR/raw/refs/heads/main/V4.rar" download>⬇️ Download V4.rar</a>
-
-  <!-- زر الدعم -->
   <a class="btn" href="https://discord.gg/VhUC2EGuHq" target="_blank">💎 Support & Buy Codes</a>
-
   <button id="muteBtn">🔈 Mute Music</button>
 
   <audio id="bgMusic" autoplay loop>
@@ -120,19 +170,414 @@
   <script>
     const music = document.getElementById('bgMusic');
     const muteBtn = document.getElementById('muteBtn');
-    muteBtn.onclick = function() {
-      if (music.muted) {
-        music.muted = false;
-        muteBtn.textContent = '🔈 Mute Music';
-      } else {
-        music.muted = true;
-        muteBtn.textContent = '🔇 Unmute Music';
-      }
+    muteBtn.onclick = () => {
+      music.muted = !music.muted;
+      muteBtn.textContent = music.muted ? '🔇 Unmute Music' : '🔈 Mute Music';
     };
 
     const langBtn = document.getElementById('langBtn');
-    langBtn.onclick = function() {
-      alert("🔄 اللغة العربية قيد الإنشاء!");
+    let isArabic = false;
+
+    langBtn.onclick = () => {
+      isArabic = !isArabic;
+      document.documentElement.lang = isArabic ? "ar" : "en";
+      document.documentElement.dir = isArabic ? "rtl" : "ltr";
+      langBtn.textContent = isArabic ? "🌐 English" : "🌐 العربية";
+
+      document.querySelector("title").textContent = "S89";
+      document.querySelector("h1").textContent = "S89";
+
+      // Intro Card
+      document.getElementById("introCard").innerHTML = isArabic ? `
+        <p>🚀 الإصدار الجديد: حماية قوية وإخفاء ملفات الفحص</p>
+        <p>✨ التخصص: فاست فلاج روبلوكس</p>
+        <p>🛡️ حماية كاملة وتفعيل سريع للأكواد</p>
+      ` : `
+        <p>🚀 New Version: Strong Protection & Anti-Chekers Files Hide</p>
+        <p>✨ Specialization: Fast Flag Roblox</p>
+        <p>🛡️ Full Protection & Fast Code Activation</p>
+      `;
+
+      // Features Card
+      document.getElementById("featuresCard").innerHTML = isArabic ? `
+        <h2>⚙️ مميزات S89 v2</h2>
+        <p><strong>📦 الإضاءة والرندر</strong></p>
+        <ul>
+          <li>🌇 إضاءة Voxel / Shadowmap / Future</li>
+          <li>🖥️ Vulkan, OpenGL, DirectX, Metal</li>
+          <li>🎮 أوضاع الرسومات: منخفض، عالي، فائق</li>
+          <li>🧊 تعطيل الظلال وتأثيرات الرياح</li>
+          <li>📏 التحكم في مدى الرؤية</li>
+          <li>🎨 جودة الخامات: عالية / منخفضة</li>
+        </ul>
+        <p><strong>🚀 تعزيز الأداء</strong></p>
+        <ul>
+          <li>🚀 دعم HyperThreading</li>
+          <li>🧠 التحكم في أنوية المعالج</li>
+          <li>🔥 رفع FPS وقتل الرسومات الثقيلة</li>
+          <li>💡 الحد من تحديث الإضاءة</li>
+          <li>📉 عداد FPS + إصلاحات الانهيار</li>
+        </ul>
+        <p><strong>🧍 الواجهة والأفاتار</strong></p>
+        <ul>
+          <li>🧍 التحكم بارتفاع الشخصية</li>
+          <li>🖼️ إخفاء الواجهة / التأثيرات / الشات</li>
+          <li>👤 تحديد الأفاتار + الأشعة السينية</li>
+          <li>📷 إخفاء رؤية الذات</li>
+          <li>✅ شارة التحقق (عميل فقط)</li>
+        </ul>
+        <p><strong>🧠 تحكم ذكي</strong></p>
+        <ul>
+          <li>🔊 مدى سماع الشات الصوتي</li>
+          <li>🛒 منع الشراء داخل اللعبة</li>
+          <li>📡 تأخير وهمي / تجميد / فصل</li>
+          <li>👻 أوضاع الإخفاء</li>
+          <li>🔧 أدوات تحكم الشبكة</li>
+        </ul>
+        <p><strong>🧩 إضافات</strong></p>
+        <ul>
+          <li>🌐 متصفح داخل اللعبة</li>
+          <li>🎮 تشغيل سريع للألعاب</li>
+          <li>📝 رسالة طرد مخصصة</li>
+          <li>🛑 منع الأحداث البعيدة</li>
+          <li>🎛️ حزم فاست فلاج (Ping / FPS)</li>
+        </ul>
+      ` : `
+        <h2>⚙️ S89 v2 Features</h2>
+        <p><strong>📦 Lighting & Rendering</strong></p>
+        <ul>
+          <li>🌇 Voxel / Shadowmap / Future Lighting</li>
+          <li>🖥️ Vulkan, OpenGL, DirectX, Metal</li>
+          <li>🎮 Graphics Modes: Low, High, Ultra</li>
+          <li>🧊 Disable Shadows & Wind Effects</li>
+          <li>📏 Control Render Distance</li>
+          <li>🎨 Texture Quality: High / Low</li>
+        </ul>
+        <p><strong>🚀 Performance Boost</strong></p>
+        <ul>
+          <li>🚀 HyperThreading Support</li>
+          <li>🧠 CPU Threads Control</li>
+          <li>🔥 Boost FPS + Ultra Kill Graphics</li>
+          <li>💡 Light Update Limiter</li>
+          <li>📉 FPS Counter + Crash Fixes</li>
+        </ul>
+        <p><strong>🧍 UI & Avatar</strong></p>
+        <ul>
+          <li>🧍 Hip Height Control</li>
+          <li>🖼️ Hide GUI / PostFX / Bubble Chat</li>
+          <li>👤 Avatar Outline + Xray</li>
+          <li>📷 Disable Self View</li>
+          <li>✅ Verified Badge (Client-Sided)</li>
+        </ul>
+        <p><strong>🧠 Smart Controls</strong></p>
+        <ul>
+          <li>🔊 Voice Chat Distance</li>
+          <li>🛒 Block In-Game Purchases</li>
+          <li>📡 Fake Lag / Freeze / Desync</li>
+          <li>👻 Invisible Modes</li>
+          <li>🔧 Network Ownership Tools</li>
+        </ul>
+        <p><strong>🧩 Extras</strong></p>
+        <ul>
+          <li>🌐 In-Game Web Browser</li>
+          <li>🎮 Quick Game Launch</li>
+          <li>📝 Custom Kick Message</li>
+          <li>🛑 Block Remote Events</li>
+          <li>🎛️ Fast Flag Packs (Ping / FPS)</li>
+        </ul>
+      `;
+    };
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <title>S89</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #000000, #0f0f0f, #001f1f, #002f2f);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      color: #0ff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: auto;
+      position: relative;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      font-size: 50px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #0ff;
+    }
+
+    .card {
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid #0ff;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 800px;
+      text-align: left;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px #0ff;
+      margin: 20px;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 15px 40px;
+      background: #0ff;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 50px;
+      transition: 0.3s;
+      box-shadow: 0 0 20px #0ff;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00cccc;
+      box-shadow: 0 0 40px #0ff;
+    }
+
+    #muteBtn, #langBtn {
+      position: fixed;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 50px;
+      backdrop-filter: blur(5px);
+      border: 2px solid #0ff;
+      background: none;
+      color: #0ff;
+    }
+
+    #muteBtn {
+      bottom: 20px;
+      left: 20px;
+    }
+
+    #langBtn {
+      top: 20px;
+      right: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    h2 {
+      margin-top: 0;
+      text-shadow: 0 0 5px #0ff;
+    }
+  </style>
+</head>
+<body>
+  <button id="langBtn">🌐 العربية</button>
+  <h1>S89</h1>
+
+  <div class="card" id="introCard">
+    <p>🚀 New Version: Strong Protection & Anti-Chekers Files Hide</p>
+    <p>✨ Specialization: Fast Flag Roblox</p>
+    <p>🛡️ Full Protection & Fast Code Activation</p>
+  </div>
+
+  <div class="card" id="featuresCard">
+    <h2>⚙️ S89 v2 Features</h2>
+
+    <p><strong>📦 Lighting & Rendering</strong></p>
+    <ul>
+      <li>🌇 Voxel / Shadowmap / Future Lighting</li>
+      <li>🖥️ Vulkan, OpenGL, DirectX, Metal</li>
+      <li>🎮 Graphics Modes: Low, High, Ultra</li>
+      <li>🧊 Disable Shadows & Wind Effects</li>
+      <li>📏 Control Render Distance</li>
+      <li>🎨 Texture Quality: High / Low</li>
+    </ul>
+
+    <p><strong>🚀 Performance Boost</strong></p>
+    <ul>
+      <li>🚀 HyperThreading Support</li>
+      <li>🧠 CPU Threads Control</li>
+      <li>🔥 Boost FPS + Ultra Kill Graphics</li>
+      <li>💡 Light Update Limiter</li>
+      <li>📉 FPS Counter + Crash Fixes</li>
+    </ul>
+
+    <p><strong>🧍 UI & Avatar</strong></p>
+    <ul>
+      <li>🧍 Hip Height Control</li>
+      <li>🖼️ Hide GUI / PostFX / Bubble Chat</li>
+      <li>👤 Avatar Outline + Xray</li>
+      <li>📷 Disable Self View</li>
+      <li>✅ Verified Badge (Client-Sided)</li>
+    </ul>
+
+    <p><strong>🧠 Smart Controls</strong></p>
+    <ul>
+      <li>🔊 Voice Chat Distance</li>
+      <li>🛒 Block In-Game Purchases</li>
+      <li>📡 Fake Lag / Freeze / Desync</li>
+      <li>👻 Invisible Modes</li>
+      <li>🔧 Network Ownership Tools</li>
+    </ul>
+
+    <p><strong>🧩 Extras</strong></p>
+    <ul>
+      <li>🌐 In-Game Web Browser</li>
+      <li>🎮 Quick Game Launch</li>
+      <li>📝 Custom Kick Message</li>
+      <li>🛑 Block Remote Events</li>
+      <li>🎛️ Fast Flag Packs (Ping / FPS)</li>
+    </ul>
+  </div>
+
+  <a class="btn" href="https://github.com/tptub/S89-ASR/raw/refs/heads/main/V4.rar" download>⬇️ Download V4.rar</a>
+  <a class="btn" href="https://discord.gg/VhUC2EGuHq" target="_blank">💎 Support & Buy Codes</a>
+  <button id="muteBtn">🔈 Mute Music</button>
+
+  <audio id="bgMusic" autoplay loop>
+    <source src="Luxor.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <script>
+    const music = document.getElementById('bgMusic');
+    const muteBtn = document.getElementById('muteBtn');
+    muteBtn.onclick = () => {
+      music.muted = !music.muted;
+      muteBtn.textContent = music.muted ? '🔇 Unmute Music' : '🔈 Mute Music';
+    };
+
+    const langBtn = document.getElementById('langBtn');
+    let isArabic = false;
+
+    langBtn.onclick = () => {
+      isArabic = !isArabic;
+      document.documentElement.lang = isArabic ? "ar" : "en";
+      document.documentElement.dir = isArabic ? "rtl" : "ltr";
+      langBtn.textContent = isArabic ? "🌐 English" : "🌐 العربية";
+
+      document.querySelector("title").textContent = "S89";
+      document.querySelector("h1").textContent = "S89";
+
+      // Intro Card
+      document.getElementById("introCard").innerHTML = isArabic ? `
+        <p>🚀 الإصدار الجديد: حماية قوية وإخفاء ملفات الفحص</p>
+        <p>✨ التخصص: فاست فلاج روبلوكس</p>
+        <p>🛡️ حماية كاملة وتفعيل سريع للأكواد</p>
+      ` : `
+        <p>🚀 New Version: Strong Protection & Anti-Chekers Files Hide</p>
+        <p>✨ Specialization: Fast Flag Roblox</p>
+        <p>🛡️ Full Protection & Fast Code Activation</p>
+      `;
+
+      // Features Card
+      document.getElementById("featuresCard").innerHTML = isArabic ? `
+        <h2>⚙️ مميزات S89 v2</h2>
+        <p><strong>📦 الإضاءة والرندر</strong></p>
+        <ul>
+          <li>🌇 إضاءة Voxel / Shadowmap / Future</li>
+          <li>🖥️ Vulkan, OpenGL, DirectX, Metal</li>
+          <li>🎮 أوضاع الرسومات: منخفض، عالي، فائق</li>
+          <li>🧊 تعطيل الظلال وتأثيرات الرياح</li>
+          <li>📏 التحكم في مدى الرؤية</li>
+          <li>🎨 جودة الخامات: عالية / منخفضة</li>
+        </ul>
+        <p><strong>🚀 تعزيز الأداء</strong></p>
+        <ul>
+          <li>🚀 دعم HyperThreading</li>
+          <li>🧠 التحكم في أنوية المعالج</li>
+          <li>🔥 رفع FPS وقتل الرسومات الثقيلة</li>
+          <li>💡 الحد من تحديث الإضاءة</li>
+          <li>📉 عداد FPS + إصلاحات الانهيار</li>
+        </ul>
+        <p><strong>🧍 الواجهة والأفاتار</strong></p>
+        <ul>
+          <li>🧍 التحكم بارتفاع الشخصية</li>
+          <li>🖼️ إخفاء الواجهة / التأثيرات / الشات</li>
+          <li>👤 تحديد الأفاتار + الأشعة السينية</li>
+          <li>📷 إخفاء رؤية الذات</li>
+          <li>✅ شارة التحقق (عميل فقط)</li>
+        </ul>
+        <p><strong>🧠 تحكم ذكي</strong></p>
+        <ul>
+          <li>🔊 مدى سماع الشات الصوتي</li>
+          <li>🛒 منع الشراء داخل اللعبة</li>
+          <li>📡 تأخير وهمي / تجميد / فصل</li>
+          <li>👻 أوضاع الإخفاء</li>
+          <li>🔧 أدوات تحكم الشبكة</li>
+        </ul>
+        <p><strong>🧩 إضافات</strong></p>
+        <ul>
+          <li>🌐 متصفح داخل اللعبة</li>
+          <li>🎮 تشغيل سريع للألعاب</li>
+          <li>📝 رسالة طرد مخصصة</li>
+          <li>🛑 منع الأحداث البعيدة</li>
+          <li>🎛️ حزم فاست فلاج (Ping / FPS)</li>
+        </ul>
+      ` : `
+        <h2>⚙️ S89 v2 Features</h2>
+        <p><strong>📦 Lighting & Rendering</strong></p>
+        <ul>
+          <li>🌇 Voxel / Shadowmap / Future Lighting</li>
+          <li>🖥️ Vulkan, OpenGL, DirectX, Metal</li>
+          <li>🎮 Graphics Modes: Low, High, Ultra</li>
+          <li>🧊 Disable Shadows & Wind Effects</li>
+          <li>📏 Control Render Distance</li>
+          <li>🎨 Texture Quality: High / Low</li>
+        </ul>
+        <p><strong>🚀 Performance Boost</strong></p>
+        <ul>
+          <li>🚀 HyperThreading Support</li>
+          <li>🧠 CPU Threads Control</li>
+          <li>🔥 Boost FPS + Ultra Kill Graphics</li>
+          <li>💡 Light Update Limiter</li>
+          <li>📉 FPS Counter + Crash Fixes</li>
+        </ul>
+        <p><strong>🧍 UI & Avatar</strong></p>
+        <ul>
+          <li>🧍 Hip Height Control</li>
+          <li>🖼️ Hide GUI / PostFX / Bubble Chat</li>
+          <li>👤 Avatar Outline + Xray</li>
+          <li>📷 Disable Self View</li>
+          <li>✅ Verified Badge (Client-Sided)</li>
+        </ul>
+        <p><strong>🧠 Smart Controls</strong></p>
+        <ul>
+          <li>🔊 Voice Chat Distance</li>
+          <li>🛒 Block In-Game Purchases</li>
+          <li>📡 Fake Lag / Freeze / Desync</li>
+          <li>👻 Invisible Modes</li>
+          <li>🔧 Network Ownership Tools</li>
+        </ul>
+        <p><strong>🧩 Extras</strong></p>
+        <ul>
+          <li>🌐 In-Game Web Browser</li>
+          <li>🎮 Quick Game Launch</li>
+          <li>📝 Custom Kick Message</li>
+          <li>🛑 Block Remote Events</li>
+          <li>🎛️ Fast Flag Packs (Ping / FPS)</li>
+        </ul>
+      `;
     };
   </script>
 </body>
